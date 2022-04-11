@@ -23,7 +23,7 @@
    <div class="row">
     <!--%= image_tag @user.get_profile_image(100,100) %>-->
     <!--% if @user == current_user %>-->
-    <!--% if user_signed_in? && @user == current_user %>-->
+
      <%= link_to edit_user_path(@user.id) , class:"btn btn-outline-secondary btn-block" do%>
       <i class="fas fa-user-cog"></i>
      <% end %>
@@ -64,7 +64,7 @@
       <tbody>
        <% @books.each do |book| %>
        <tr>
-       <td><%= link_to user_path(current_user.id) do %>
+       <td><%= link_to user_path(@user.id) do %>
        <%= image_tag @user.get_profile_image(100,100) %>
        <% end %></td>
        <td>
