@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  # before_action :correct_user, only: [:edit, :update]
-
  def new
    @user =User.new
  end
@@ -10,8 +8,8 @@ class UsersController < ApplicationController
   @user = User.new(user_params)
   @user.user_id = current_user.id
   if @user.save
-   flash[:complete]="You have updated user successfully."
-      redirect_to users_path
+  flash[:complete]="You have updated user successfully."
+   redirect_to users_path
   else
    # @users = User.all
     render :index
@@ -37,26 +35,14 @@ class UsersController < ApplicationController
      redirect_to  user_path(current_user.id)
      end
     end
-     # unless @user == current_user
-     # redirect_to  users_path
-     # end
-    # end
-     # if params[:id] == current_user.id
-     # @user = User.find(params[:id])
-     # render action: :edit
-     # else
-     # @user = current_user
-     #  render action: :show
-     # end
+  
 
    def update
      @user = User.find(params[:id])
-      # @user = current_user
      if @user.update(user_params)
      flash[:complete]="You have updated user successfully."
      redirect_to user_path(@user.id)
      else
-     # @user =User.find(params[:id])
       render :edit
      end
    end
@@ -74,10 +60,6 @@ class UsersController < ApplicationController
     end
    end
 
-     # @user = @book.user
-    # redirect_to(users_path) unless @user == current_user
-     # redirect_to(users_path) unless current_user?(@user)
-    # end
 end
 
 

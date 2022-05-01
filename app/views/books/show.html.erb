@@ -18,8 +18,7 @@
       </tr>
      </tbody></table>
   <div>
-   <!--% if user_signed_in? && @book.user == current_user %>-->
-    <!--% @book.user == current_user %>-->
+ 
   <%= link_to edit_user_path(@book.user.id), class:"btn btn-outline-secondary btn-block" do %>
    <i class="fas fa-user-cog"></i>
   <% end %>
