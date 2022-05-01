@@ -18,7 +18,7 @@
       </tr>
      </tbody></table>
   <div>
- 
+
   <%= link_to edit_user_path(@book.user.id), class:"btn btn-outline-secondary btn-block" do %>
    <i class="fas fa-user-cog"></i>
   <% end %>
@@ -47,6 +47,8 @@
       <%= @book.user.name %><% end %></td>
       <td><%= link_to book_path do %><%= @book.title %><% end %></td>
       <td><%= @book.body %></td>
+      <td>コメント数：<%= @book.book_comments.count %></td>
+      <td><%= render "favorites/btn", book: @book %> </td>
       <td><% if @book.user == current_user %>
        <%= link_to "Edit", edit_book_path(@book.id) ,class:"btn btn-sm btn-success" %>
       <% end %></td>
@@ -55,6 +57,8 @@
       <% end %></td>
      </tr></tbody>
     </table>
+    <%= render "book_comments/index",book: @book %>
+    <%= render "book_comments/form",book: @book, book_comment: @book_comment %>
    </div>
   </div>
  </div>

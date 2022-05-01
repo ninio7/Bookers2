@@ -17,7 +17,7 @@
 	   <%= image_tag book.user.get_profile_image(100,100) %><% end %></td>
 		 <td><%=link_to book_path(book.id) do %><%=book.title %><% end %></td>
 		 <td><%= book.body %></td>
-		 <td><%= render "favorites/btn", book:book %></td>
+		 <td><%= render "favorites/btn", book: book %></td>
 		</tr>
 	 <% end %>
     </tbody>
