@@ -37,31 +37,22 @@ class BooksController < ApplicationController
    redirect_to books_path
   end
 
-    def update
-    @book = Book.find(params[:id])
-    # @book.user_id = current_user.id
-     if @book.update(book_params)
-     flash[:complete]="You have updated book successfully."
-     redirect_to book_path(@book.id)
-     else
-     render :edit
-     end
-    end
+  def update
+   @book = Book.find(params[:id])
+   if @book.update(book_params)
+   flash[:complete]="You have updated book successfully."
+   redirect_to book_path(@book.id)
+   else
+   render :edit
+   end
+  end
 
-    def edit
-     @book = Book.find(params[:id])
-     unless @book.user == current_user
-     redirect_to  books_path
-     end
-    end
-    # if params[:id] == current_user.id
-    # @book = Book.find(params[:id])
-    # render action: :edit
-    # else
-    # @user = current_user
-    # render action: :show
-    # end
-    # end
+  def edit
+   @book = Book.find(params[:id])
+   unless @book.user == current_user
+   redirect_to  books_path
+   end
+  end
 
 
 private
@@ -70,18 +61,11 @@ private
     params.require(:book).permit(:title,:body)
   end
 
-  # def correct_user
-  #   @book = Book.find(params[:id])
-  #   @user = @book.user
-  #   redirect_to(books_path) unless @user == current_user
-  # end
+
  def correct_user
-      @book = Book.find(params[:id])
-    unless @book == current_user
-      redirect_to user_path(current_user.id)
-    end
+   @book = Book.find(params[:id])
+   unless @book == current_user
+   redirect_to user_path(current_user.id)
+   end
  end
-
-
-
 end
